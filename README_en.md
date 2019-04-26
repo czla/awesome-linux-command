@@ -12,6 +12,7 @@ For Chinese version, click [中文版](README.md)
 * [8.Packaging system](#8packaging-system)
 * [9.Find files](#9find-files)
 * [10.Compress files](#10compress-files)
+* [11.Regular Expression](#11regular-expression)
 
 ### 1.Shell  
 Command | Description  
@@ -419,10 +420,27 @@ Command | Description
     `unrar e file.rar`      | Uncompress `file.rar`
     `unzip file.zip`        | Uncompress `file.zip`
     `tar –cvf jpg.tar *.jpg` | Archive *.jpg to `jpg.tar`
-    `tar –czf jpg.tar.gz *.jpg` | Archive *.jpgto `jpg.tar`，then compress it to `jpg.tar.gz` using gzip
-    `tar –cjf jpg.tar.bz2 *.jpg` | Archive *.jpgto `jpg.tar`，then compress it to `jpg.tar.bz2` using bzip2
-    `tar –cZf jpg.tar.Z *.jpg`  | Archive *.jpgto `jpg.tar`，then compress it to `jpg.tar.Z` using compress
+    `tar –czf jpg.tar.gz *.jpg` | Archive *.jpg to `jpg.tar`，then compress it to `jpg.tar.gz` using gzip
+    `tar –cjf jpg.tar.bz2 *.jpg` | Archive *.jpg to `jpg.tar`，then compress it to `jpg.tar.bz2` using bzip2
+    `tar –cZf jpg.tar.Z *.jpg`  | Archive *.jpg to `jpg.tar`，then compress it to `jpg.tar.Z` using compress
     `rar a jpg.rar *.jpg`   | Compress *.jpg to `jpg.rar`
     `zip jpg.zip *.jpg`     | Compress *.jpg to `jpg.zip`
+
+[Back to Content](#content)
+
+### 11.Regular Expression
+* grep: **g**lobal **r**egular **e**xpression **p**rint
+    
+    Option | Description
+    :--: | :--:
+    -i  | Ignore case, may also be specified by `--ignore-case`
+    -v  | Invert match, may also be specified by `--invert-match`
+    -c  | Print the number of matches (or non-matches if the -v option is also specified), may also be specified by `--count`
+    -l  | Print the name of each file that contains a match instead of the lines themselves, may also be specified by `--files-with-matches`
+    -L  | Like the -l option, but print only the names of files that do not contain matches, may also be specified by `--files-without-matches`
+    -n  | Prefix each matching line with the number of the line within the file,  may also be specified by `--line-number`
+    -h  | For multi-file searches, suppress the output of filenames, may also be specified by `--no-filename`
+
+
 
 [Back to Content](#content)

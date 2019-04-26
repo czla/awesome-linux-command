@@ -12,6 +12,7 @@
 * [8.软件包管理](#8软件包管理)
 * [9.文件查找](#9文件查找)
 * [10.文件压缩](#10文件压缩)
+* [11.正则表达式](#11正则表达式)
 
 ### 1.Shell  
 命令 | 说明  
@@ -45,13 +46,13 @@ rm | 删除文件和目录
 ln | 创建硬链接和符号链接 
 du -h --max-depth=1 | 查看当前目录下文件夹大小 
 
-* ls命令选项  
+* ls 命令选项  
 
 选项 | 长选项 | 说明  
 :-: | :-: | :-  
 -a | --all | 列出所有文件，包括隐藏文件  
 -d | --directory | 列出这个目录中的内容，而不是目录本身  
--F | --classify | 在每个所列出的名字后面加上一个指示符。例如，如果名字是目录名，则会加上一个'/'字符  
+-F | --classify | 在每个所列出的名字后面加上一个指示符。例如，如果名字是目录名，则会加上一个 '/' 字符  
 -h | --human-readable | 以人们可读的格式，而不是以字节数来显示文件的大小  
 -l |  | 以长格式显示结果  
 -r | --reverse | 默认按照字母升序排列，此项会以相反的顺序来显示结果  
@@ -78,7 +79,7 @@ du -h --max-depth=1 | 查看当前目录下文件夹大小
 \[:lower:\] | 匹配任意一个小写字母
 \[:upper:\] | 匹配任意一个大写字母
 
-* cp命令选项
+* cp 命令选项
 
 选项 | 意义  
 :-: | :-  
@@ -88,7 +89,7 @@ du -h --max-depth=1 | 查看当前目录下文件夹大小
 -u, --update | 仅复制目标目录中不存在的文件，或者是文件内容新于目标目录中已经存在的文件
 -v, --verbose | 显示翔实的命令操作信息
 
-* mv选项包括-i，-u，-v;rm选项包括-i，-r，-v，-f;意义类似cp
+* mv 选项包括-i，-u，-v; rm 选项包括-i，-r，-v，-f; 意义类似 cp
 
 [目录](#目录)
 
@@ -297,7 +298,7 @@ Red Hat | rpm -qf file_name
 locate | 通过名字来查找文件
 updatedb | 数据库更新
 
-* find文件类型
+* find 文件类型
 
 文件类型 | 说明
 :-: | :-
@@ -307,7 +308,7 @@ d | 文件夹
 f | 普通文件
 l | 符号链接
 
-* find大小单位
+* find 大小单位
 
 字符 | 单位
 :-: | :-
@@ -318,7 +319,7 @@ k | 千字节(1024个字节单位)
 M | 兆字节(1048576个字节单位)
 G | 千兆字节(1073741824个字节单位)
 
-* find测试条件
+* find 测试条件
 
 测试条件 | 说明
 :-: | :-
@@ -364,12 +365,12 @@ G | 千兆字节(1073741824个字节单位)
 
 ### 10.文件压缩
 * gzip: 压缩/解压缩一个或多个文件，直接在原始文件上替代, 扩展名.gz
-    * gzip选项
+    * gzip 选项
 
     选项 | 说明
     :--: | :--:
     -c  | 把输出写入到标准输出，并且保留原始文件。也有可能用--stdout 和--to-stdout 选项来指定
-    -d  | 解压缩。同gunzip。也可以指定--decompress或--uncompress选项
+    -d  | 解压缩。同 gunzip。也可以指定--decompress或--uncompress选项
     -f  | 强制压缩，即使原始文件的压缩文件已经存在了，也要执行。也可以用--force 选项来指定
     -h  | 显示用法信息。也可用--help 选项来指定
     -l  | 列出每个被压缩文件的压缩数据。也可用--list 选项
@@ -378,19 +379,19 @@ G | 千兆字节(1073741824个字节单位)
     -v  | 显示压缩过程中的信息。也可用--verbose 选项来指定
     -number | 设置压缩指数。number 是一个在1（最快，最小压缩）到9（最慢，最大压缩）之间的整数。 数值1和9也可以各自用--fast 和--best 选项来表示。默认值是整数6
 
-* bzip2: 与gzip类似，压缩程度更高（压缩速度变慢），扩展名.bz2
-* zip: windows下常用压缩工具，扩展名.zip
-    * zip示例
+* bzip2: 与 gzip 类似，压缩程度更高（压缩速度变慢），扩展名 .bz2
+* zip: windows 下常用压缩工具，扩展名 .zip
+    * zip 示例
 
     命令  | 说明
     :--:  | :--:
     `zip -r myfile.zip ./*`  | 将当前目录下的所有文件和文件夹全部压缩成`myfile.zip`文件
     `zip -d myfile.zip smart.txt`  | 删除压缩文件中`smart.txt`
     `zip -m myfile.zip ./rpm_info.txt`  | 向压缩文件`myfile.zip`中添加`rpm_info.txt`
-    `unzip -o -d /home/sunny myfile.zip` | 把`myfile.zip`文件解压到`/home/sunny/`,-o在不提示的情况下覆盖文件, -d指明解压路径
+    `unzip -o -d /home/sunny myfile.zip` | 把`myfile.zip`文件解压到`/home/sunny/`, -o 在不提示的情况下覆盖文件, -d 指明解压路径
 
-* tar: 归档，tape archive的简称，收集许多文件并捆绑成一个大文件，扩展名.tar
-    * tar模式
+* tar: 归档，tape archive 的简称，收集许多文件并捆绑成一个大文件，扩展名 .tar
+    * tar 模式
 
     模式  | 说明
     :--:  | :--:
@@ -398,15 +399,15 @@ G | 千兆字节(1073741824个字节单位)
     -x     |  抽取归档文件
     -r     |  追加新的文件到归档文件的末尾
     -t     |  列出归档文件的内容，以上4个只能选一个
-    -v     |  详细报告tar处理的文件信息
+    -v     |  详细报告 tar 处理的文件信息
     -f     |  指定归档文件名字，该参数必须有且放在最后
     
     * 示例
 
     命令  | 说明
     :--:  | :--:
-    `tar -cf all.tar *.jpg`  | 将所有.jpg的文件打成一个名为`all.tar`的包
-    `tar -rf all.tar *.gif`  | 将所有.gif的文件增加到`all.tar`的包里面去
+    `tar -cf all.tar *.jpg`  | 将所有 .jpg 的文件打成一个名为`all.tar`的包
+    `tar -rf all.tar *.gif`  | 将所有 .gif 的文件增加到`all.tar`的包里面去
     `tar -tf all.tar`        | 列出`all.tar`包中所有文件
     `tar -xf all.tar`        | 解压出`all.tar`包中所有文件
 
@@ -420,11 +421,53 @@ G | 千兆字节(1073741824个字节单位)
     `tar –xZvf file.tar.Z`  | 解压`file.tar.Z`
     `unrar e file.rar`      | 解压`file.rar`
     `unzip file.zip`        | 解压`file.zip`
-    `tar –cvf jpg.tar *.jpg` | 将目录里所有jpg文件打包成`jpg.tar`
-    `tar –czf jpg.tar.gz *.jpg` | 将目录里所有jpg文件打包成`jpg.tar`后，并且将其用gzip压缩为`jpg.tar.gz`
-    `tar –cjf jpg.tar.bz2 *.jpg` | 将目录里所有jpg文件打包成`jpg.tar`后，并且将其用bzip2压缩为`jpg.tar.bz2`
-    `tar –cZf jpg.tar.Z *.jpg`  | 将目录里所有jpg文件打包成`jpg.tar`后，并且将其用compress压缩为`jpg.tar.Z`
-    `rar a jpg.rar *.jpg`   | rar格式的压缩
-    `zip jpg.zip *.jpg`     | zip格式的压缩
+    `tar –cvf jpg.tar *.jpg` | 将目录里所有 jpg 文件打包成`jpg.tar`
+    `tar –czf jpg.tar.gz *.jpg` | 将目录里所有 jpg 文件打包成`jpg.tar`后，并且将其用gzip压缩为`jpg.tar.gz`
+    `tar –cjf jpg.tar.bz2 *.jpg` | 将目录里所有 jpg 文件打包成`jpg.tar`后，并且将其用bzip2压缩为`jpg.tar.bz2`
+    `tar –cZf jpg.tar.Z *.jpg`  | 将目录里所有 jpg 文件打包成`jpg.tar`后，并且将其用compress压缩为`jpg.tar.Z`
+    `rar a jpg.rar *.jpg`   | rar 格式的压缩
+    `zip jpg.zip *.jpg`     | zip 格式的压缩
+
+[目录](#目录)
+
+### 11.正则表达式
+* grep: **g**lobal **r**egular **e**xpression **p**rint
+    
+    选项 | 描述
+    :--: | :--:
+    -i  | 忽略大小写，也可用 --ignore-case 来指定
+    -v  | 打印不匹配项，也可用 --invert-match 来指定
+    -c  | 打印匹配的数量（或者是不匹配的数目，若指定了-v 选项），也可用--count 选项来指定
+    -l  | 打印包含匹配项的文件名，而不是文本行本身，也可用--files-with-matches 选项来指定
+    -L  | 相似于-l 选项，但是只是打印不包含匹配项的文件名，也可用--files-without-match 来指定
+    -n  | 在每个匹配行之前打印出其位于文件中的相应行号，也可用--line-number 选项来指定
+    -h  | 应用于多文件搜索，不输出文件名，也可用--no-filename 选项来指定
+
+* 元字符
+
+    字符 | 说明
+    :--: | :--:
+    `.` | 匹配在此位置的任意一个字符
+    `^` | 在文本行的开头匹配
+    `$` | 在文本行的结尾匹配
+    `[]`| 从一个指定的字符集合中匹配单个字符
+
+
+    * 元字符被放置到中括号里会失去了它们的特殊含义，除了以下两种元字符：
+
+        字符 | 说明
+        :--: | :--:
+        `-` | 表示一个字符范围
+        `^` | 表示否定
+        
+* 示例
+    
+    命令  | 说明
+    :--:  | :--:
+    `grep bzip dirlist*.txt`  | 在所有列出的文件中搜索字符串 bzip
+    `grep -h '.zip' dirlist*.txt` | 查找包含正则表达式`.zip`的文本行
+    `grep -h '^$' dirlist*.txt` | 匹配空行
+    `grep -i '^..j.r$' /usr/share/dict/words` | 查找五个字母的单词，它的第三个字母是‘j’，最后一个字母是‘r’
+    `grep -h '[bg]zip' dirlist*.txt` | 匹配包含字符串“bzip”或者“gzip”的任意行
 
 [目录](#目录)
