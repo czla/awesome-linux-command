@@ -441,6 +441,59 @@ Command | Description
     -n  | Prefix each matching line with the number of the line within the file,  may also be specified by `--line-number`
     -h  | For multi-file searches, suppress the output of filenames, may also be specified by `--no-filename`
 
+* Metacharacter
+
+    Character | Description
+    :--: | :--:
+    `.` | Match any character in that character position
+    `^` | Matching at the beginning of the line
+    `$` | Matching at the end of the line
+    `[]`| Match a single character from a specified set of characters
+
+
+    * metacharacters lose their special meaning when placed within brackets except the following two:
+
+        Character | Description
+        :--: | :--:
+        `-` | Indicate a character range
+        `^` | Indicate negation if it is the first character within a bracket expression
+        
+* **E**xtended **R**egular **E**xpressions (ERE): `egrep` or `grep -E`add following metacharacters:
+
+    Character | Description
+    :--: | :--:
+    `|` | Alternation, allows a match to occur from among a set of expressions
+    `()` | Separate the alternation
+    `?` | Limitation, indicate that they are to be matched zero or one time
+    `*` | Limitation, indicate that they are to be matched zero or any times
+    `+` | Limitation, indicate that they are to be matched one or more times
+    `{}`| Limitation, express minimum and maximum numbers of required matches
+
+    * Specifying The Number Of Matches
+
+    Specifier  | Meaning
+    :--:    | :--:
+    `{n}`   | Match the preceding element if it occurs exactly n times
+    `{n,m}` | Match the preceding element if it occurs at least n times, but no more than m times
+    `{n,}`  | Match the preceding element if it occurs n or more times
+    `{,m}`  | Match the preceding element if it occurs no more than m times
+
+
+* Examples
+    
+    Command  | Description
+    :--:  | :--:
+    `grep bzip dirlist*.txt`  | Searche all of the listed files for the string `bzip`
+    `grep -h '.zip' dirlist*.txt` | Searche for any line in our files that matches the regular expression `.zip`
+    `grep -h '^$' dirlist*.txt` | Match empty line
+    `grep -i '^..j.r$' /usr/share/dict/words` | Search a five letter word whose third letter is `‘j’` and last letter is `‘r’`
+    `grep -h '[bg]zip' dirlist*.txt` | Match any line contains `'bzip'` or `'gzip'`
+    `grep -h '[^bg]zip' dirlist*.txt` | Match any line contains `'bzip'` or `'gzip'`, and the preceding letter of `'zip'` is neither `'b'` nor `'g'`
+    `grep -h '^[A-Za-z0-9]' dirlist*.txt` |  Matches all filenames starting with letters and numbers
+    `grep -h '[-AZ]' dirlist*.txt` | Match every filename containing a `dash`, or a upper case `'A'` or an uppercase `'Z'`
+    `grep -Eh '^(bz|gz|zip)' dirlist*.txt` | Match the filenames in our lists that start with either `'bz'`, `'gz'`, or `'zip'`
+    `grep -Eh '^bz|gz|zip' dirlist*.txt` | Match any filename that begins with `'bz'` or contains `'gz'` or contains `'zip'`
+    `^\(?[0-9]\)?  [0-9]-[0-9]$` | Match `n n-n` or `(n) n-n`, `n` is a number
 
 
 [Back to Content](#content)
