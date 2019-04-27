@@ -493,7 +493,7 @@ G | 千兆字节(1073741824个字节单位)
     `grep -h '[^bg]zip' dirlist*.txt` | 包含字符串“zip”，并且“zip”的前一个字符不是“b”和“g”
     `grep -h '^[A-Za-z0-9]' dirlist*.txt` | 匹配了所有以字母和数字开头的文件名
     `grep -h '[-AZ]' dirlist*.txt` | 匹配包含一个连字符，或“A”，或“Z”的文件名
-    `grep -Eh '^(\|gz\|zip)' dirlist*.txt` | 匹配以“bz”，或“gz”，或“zip”开头的文件名
+    `grep -Eh '^(bz\|gz\|zip)' dirlist*.txt` | 匹配以“bz”，或“gz”，或“zip”开头的文件名
     `grep -Eh '^bz\|gz\|zip' dirlist*.txt` | 匹配任意以“bz”开头，或包含“gz”，或包含“zip”的文件名
     `^\(?[0-9]\)?  [0-9]-[0-9]$` | 匹配`n n-n`或`(n) n-n`，n为数字
 
