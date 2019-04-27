@@ -462,7 +462,7 @@ Command | Description
 
     Character | Description
     :--: | :--:
-    `|` | Alternation, allows a match to occur from among a set of expressions
+    `\|` | Alternation, allows a match to occur from among a set of expressions
     `()` | Separate the alternation
     `?` | Limitation, indicate that they are to be matched zero or one time
     `*` | Limitation, indicate that they are to be matched zero or any times
@@ -491,8 +491,8 @@ Command | Description
     `grep -h '[^bg]zip' dirlist*.txt` | Match any line contains `'bzip'` or `'gzip'`, and the preceding letter of `'zip'` is neither `'b'` nor `'g'`
     `grep -h '^[A-Za-z0-9]' dirlist*.txt` |  Matches all filenames starting with letters and numbers
     `grep -h '[-AZ]' dirlist*.txt` | Match every filename containing a `dash`, or a upper case `'A'` or an uppercase `'Z'`
-    `grep -Eh '^(bz|gz|zip)' dirlist*.txt` | Match the filenames in our lists that start with either `'bz'`, `'gz'`, or `'zip'`
-    `grep -Eh '^bz|gz|zip' dirlist*.txt` | Match any filename that begins with `'bz'` or contains `'gz'` or contains `'zip'`
+    `grep -Eh '^(bz\|gz\|zip)' dirlist*.txt` | Match the filenames in our lists that start with either `'bz'`, `'gz'`, or `'zip'`
+    `grep -Eh '^bz\|gz\|zip' dirlist*.txt` | Match any filename that begins with `'bz'` or contains `'gz'` or contains `'zip'`
     `^\(?[0-9]\)?  [0-9]-[0-9]$` | Match `n n-n` or `(n) n-n`, `n` is a number
 
 
