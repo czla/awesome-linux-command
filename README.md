@@ -341,7 +341,7 @@ G | 千兆字节(1073741824个字节单位)
 -and | 默认情况。如果操作符两边的测试条件都是真，则匹配。可以简写为 -a
 -or | 若操作符两边的任一个测试条件为真，则匹配。可以简写为 -o
 -not | 若操作符后面的测试条件是假，则匹配。可以简写为一个感叹号（!）
-() | 把测试条件和操作符组合起来形成更大的表达式。这用来控制逻辑计算的优先级。 
+() | 把测试条件和操作符组合起来形成更大的表达式。这用来控制逻辑计算的优先级。
 
 * find命令预定义的操作
 
@@ -379,8 +379,8 @@ G | 千兆字节(1073741824个字节单位)
     -v  | 显示压缩过程中的信息。也可用--verbose 选项来指定
     -number | 设置压缩指数。number 是一个在1（最快，最小压缩）到9（最慢，最大压缩）之间的整数。 数值1和9也可以各自用--fast 和--best 选项来表示。默认值是整数6
 
-* bzip2: 与 gzip 类似，压缩程度更高（压缩速度变慢），扩展名 .bz2
-* zip: windows 下常用压缩工具，扩展名 .zip
+* bzip2: 与 `gzip` 类似，压缩程度更高（压缩速度变慢），扩展名`.bz2`
+* zip: windows 下常用压缩工具，扩展名`.zip`
     * zip 示例
 
     命令  | 说明
@@ -388,9 +388,9 @@ G | 千兆字节(1073741824个字节单位)
     `zip -r myfile.zip ./*`  | 将当前目录下的所有文件和文件夹全部压缩成`myfile.zip`文件
     `zip -d myfile.zip smart.txt`  | 删除压缩文件中`smart.txt`
     `zip -m myfile.zip ./rpm_info.txt`  | 向压缩文件`myfile.zip`中添加`rpm_info.txt`
-    `unzip -o -d /home/sunny myfile.zip` | 把`myfile.zip`文件解压到`/home/sunny/`, -o 在不提示的情况下覆盖文件, -d 指明解压路径
+    `unzip -o -d /home/sunny myfile.zip` | 把`myfile.zip`文件解压到`/home/sunny/`, `-o`在不提示的情况下覆盖文件, `-d`指明解压路径
 
-* tar: 归档，tape archive 的简称，收集许多文件并捆绑成一个大文件，扩展名 .tar
+* tar: 归档，tape archive 的简称，收集许多文件并捆绑成一个大文件，扩展名`.tar`
     * tar 模式
 
     模式  | 说明
@@ -406,8 +406,8 @@ G | 千兆字节(1073741824个字节单位)
 
     命令  | 说明
     :--:  | :--:
-    `tar -cf all.tar *.jpg`  | 将所有 .jpg 的文件打成一个名为`all.tar`的包
-    `tar -rf all.tar *.gif`  | 将所有 .gif 的文件增加到`all.tar`的包里面去
+    `tar -cf all.tar *.jpg`  | 将所有`.jpg`的文件打成一个名为`all.tar`的包
+    `tar -rf all.tar *.gif`  | 将所有`.gif`的文件增加到`all.tar`的包里面去
     `tar -tf all.tar`        | 列出`all.tar`包中所有文件
     `tar -xf all.tar`        | 解压出`all.tar`包中所有文件
 
@@ -435,13 +435,13 @@ G | 千兆字节(1073741824个字节单位)
     
     选项 | 描述
     :--: | :--:
-    -i  | 忽略大小写，也可用 --ignore-case 来指定
-    -v  | 打印不匹配项，也可用 --invert-match 来指定
-    -c  | 打印匹配的数量（或者是不匹配的数目，若指定了-v 选项），也可用--count 选项来指定
-    -l  | 打印包含匹配项的文件名，而不是文本行本身，也可用--files-with-matches 选项来指定
-    -L  | 相似于-l 选项，但是只是打印不包含匹配项的文件名，也可用--files-without-match 来指定
-    -n  | 在每个匹配行之前打印出其位于文件中的相应行号，也可用--line-number 选项来指定
-    -h  | 应用于多文件搜索，不输出文件名，也可用--no-filename 选项来指定
+    `-i`  | 忽略大小写，也可用`--ignore-case`来指定
+    `-v`  | 打印不匹配项，也可用`--invert-match`来指定
+    `-c`  | 打印匹配的数量（或者是不匹配的数目，若指定了`-v` 选项），也可用`--count`选项来指定
+    `-l`  | 打印包含匹配项的文件名，而不是文本行本身，也可用`--files-with-matches`选项来指定
+    `-L`  | 相似于`-l`选项，但是只是打印不包含匹配项的文件名，也可用`--files-without-match`来指定
+    `-n`  | 在每个匹配行之前打印出其位于文件中的相应行号，也可用`--line-number`选项来指定
+    `-h`  | 应用于多文件搜索，不输出文件名，也可用`--no-filename`选项来指定
 
 * 元字符
 
@@ -460,7 +460,7 @@ G | 千兆字节(1073741824个字节单位)
         `-` | 表示一个字符范围
         `^` | 作为第一个字符时，表示否定
         
-* 扩展的正则表达式(ERE): egrep或grep -E，增加了元字符
+* 扩展的正则表达式(ERE): `egrep`或`grep -E`，增加了元字符
 
     字符 | 说明
     :--: | :--:
@@ -475,26 +475,26 @@ G | 千兆字节(1073741824个字节单位)
 
     限定符  | 意思
     :--:    | :--:
-    `{n}`   | 匹配前面的元素，如果它确切地出现了 n 次
-    `{n,m}` | 匹配前面的元素，如果它至少出现了 n 次，但是不多于 m 次
-    `{n,}`  | 匹配前面的元素，如果它出现了 n 次或多于 n 次
-    `{,m}`  | 匹配前面的元素，如果它出现的次数不多于 m 次
+    `{n}`   | 匹配前面的元素，如果它确切地出现了`n`次
+    `{n,m}` | 匹配前面的元素，如果它至少出现了`n`次，但是不多于`m`次
+    `{n,}`  | 匹配前面的元素，如果它出现了`n`次或多于`n`次
+    `{,m}`  | 匹配前面的元素，如果它出现的次数不多于`m`次
 
 
 * 示例
     
     命令  | 说明
     :--:  | :--:
-    `grep bzip dirlist*.txt`  | 在所有列出的文件中搜索字符串 bzip
+    `grep bzip dirlist*.txt`  | 在所有列出的文件中搜索字符串`bzip`
     `grep -h '.zip' dirlist*.txt` | 查找包含正则表达式`.zip`的文本行
     `grep -h '^$' dirlist*.txt` | 匹配空行
-    `grep -i '^..j.r$' /usr/share/dict/words` | 查找五个字母的单词，它的第三个字母是‘j’，最后一个字母是‘r’
-    `grep -h '[bg]zip' dirlist*.txt` | 匹配包含字符串“bzip”或者“gzip”的任意行
-    `grep -h '[^bg]zip' dirlist*.txt` | 包含字符串“zip”，并且“zip”的前一个字符不是“b”和“g”
+    `grep -i '^..j.r$' /usr/share/dict/words` | 查找五个字母的单词，它的第三个字母是`j`，最后一个字母是`r`
+    `grep -h '[bg]zip' dirlist*.txt` | 匹配包含字符串`bzip`或者`gzip`的任意行
+    `grep -h '[^bg]zip' dirlist*.txt` | 包含字符串`zip`，并且`zip`的前一个字符不是`b`和`g`
     `grep -h '^[A-Za-z0-9]' dirlist*.txt` | 匹配了所有以字母和数字开头的文件名
-    `grep -h '[-AZ]' dirlist*.txt` | 匹配包含一个连字符，或“A”，或“Z”的文件名
-    `grep -Eh '^(bz\|gz\|zip)' dirlist*.txt` | 匹配以“bz”，或“gz”，或“zip”开头的文件名
-    `grep -Eh '^bz\|gz\|zip' dirlist*.txt` | 匹配任意以“bz”开头，或包含“gz”，或包含“zip”的文件名
-    `^\(?[0-9]\)?  [0-9]-[0-9]$` | 匹配`n n-n`或`(n) n-n`，n为数字
+    `grep -h '[-AZ]' dirlist*.txt` | 匹配包含一个连字符，或`A`，或`Z`的文件名
+    `grep -Eh '^(bz\|gz\|zip)' dirlist*.txt` | 匹配以`bz`，或`gz`，或`zip`开头的文件名
+    `grep -Eh '^bz\|gz\|zip' dirlist*.txt` | 匹配任意以`bz`开头，或包含`gz`，或包含`zip`的文件名
+    `^\(?[0-9]\)?  [0-9]-[0-9]$` | 匹配`n n-n`或`(n) n-n`，`n`为数字
 
 [目录](#目录)
