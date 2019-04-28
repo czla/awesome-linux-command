@@ -13,6 +13,7 @@ For Chinese version, click [中文版](README.md)
 * [9.Find files](#9find-files)
 * [10.Compress files](#10compress-files)
 * [11.Regular Expression](#11regular-expression)
+* [12.Manipulating text](#12manipulating-text)
 
 ### 1.Shell  
 Command | Description  
@@ -495,5 +496,75 @@ Command | Description
     `grep -Eh '^bz\|gz\|zip' dirlist*.txt` | Match any filename that begins with `'bz'` or contains `'gz'` or contains `'zip'`
     `^\(?[0-9]\)?  [0-9]-[0-9]$` | Match `n n-n` or `(n) n-n`, `n` is a number
 
+[Back to Content](#content)
+
+### 12.Manipulating text
+* **sort**: Sort lines of text files
+    * Common sort Options
+
+    Option | Long Option | Description
+    :--:  | :--: | :--:
+    `-b` | `--ignore-leading-blanks` | Ignore leading spaces in lines and calculates sorting based on the first non-whitespace character on the line
+    `-f` | `--ignore-case`  | Makes sorting case insensitive
+    `-n` | `--numeric-sort` | Performs sorting based on the numeric evaluation of a string
+    `-r` | `--reverse`      | Sort in reverse order
+    `-k` | `--key=field1[,field2]` | Sort based on a key field located from `field1` to `field2` rather than the entire line
+    `-m` | `--merge`        | Merge multiple files into a single sorted result without performing any additional sorting
+    `-o` | `--output=file`  | Send sorted output to file rather than standard output
+    `-t` | `--field-separator=char` | Define the field separator character. By default fields are separated by spaces or tabs
+
+* **uniq**: Removes duplicate lines which are adjacent to each other
+    * Common uniq Options
+
+        Option  |  Description
+        :--:  |  :--:
+        `-c` | Output a list of duplicate lines preceded by the number of times the line occurs
+        `-d` | Only output repeated lines, rather than unique lines
+        `-f n` | Ignore `n` leading fields in each line, and fields are separated by whitespace
+        `-i` | Ignore case during the line comparisons
+        `-s n` | Ignore the leading `n` characters of each line
+        `-u` |  Only output unique lines. This is the default
+
+* **tr**: Transliterate characters
+    * `echo "lowercase letters" | tr a-z A-Z` outputs `LOWERCASE LETTERS`
+    * `echo "lowercase letters" | tr [:lower:] A` outputs `AAAAAAAAA AAAAAAA`
+    * `tr -d '\r' < dos_file > unix_file` converts `MS-DOS` text files to `Unix` style text
+
+* **sed**: **s**tream **ed**itor
+    * sed Address Notation
+
+    Address | Description
+    :--: | :--:
+    `n` | A line number where `n` is a positive integer
+    `$` | The last line
+    `/regexp/` | Lines matching a POSIX basic regular expression
+    `addr1,addr2` | A range of lines from `addr1` to `addr2`, inclusive. Addresses may be any of the single address forms above
+    `first~step` | Match the line represented by the number `first`, then each subsequent line at `step` intervals
+    `addr1,+n` | Match `addr1` and the following `n` lines
+    `addr!` | Match all lines except `addr`, which may be any of the forms above
+
+    * sed Basic Editing Commands
+        
+        Command | Description
+        :--: | :--:
+        `=` | Output current line number
+        `a` | Append text after the current line
+        `d` | Delete the current line
+        `i` | Insert text in front of the current line
+        `p` | Print the current line
+        `q` | Exit `sed` without processing any more lines. If the `-n` option is not specified, output the current line.
+        `Q` | Exit `sed` without processing any more lines
+        `s/regexp/replacement/` | Substitute the contents of `replacement` wherever `regexp` is found, after the trailing slash following replacement, an optional flag may be specified to modify the s command’s behavior
+    * Examples
+
+    Command | Description
+    :--: | :--:
+    `echo "front" \| sed 's/front/back/'` | Replace `front` with `back`
+    `echo "front" \| sed '2s/front/back/'` | Replace `front` with `back` in the second line, so output is still `front`
+    `sed -n '1,5p' distros.txt` | **Print** a range of lines, starting with line one and continuing to line five
+    `/etc/passwd \| sed '/root/p'` | Search lines contain `root` in `/etc/passwd`
+    `/etc/passwd \| sed  '/root/d'` | Delete lines contain `root` in `/etc/passwd` and print other lines
+    `sed -i 's/\.$/\!/g' regular_express.txt` | Replace the last `.` of a line with `!` in `regular_express.txt`
+    `sed -i '$a # This is a test' regular_express.txt` | Add `# This is a test` to the last line of `regular_express.txt`
 
 [Back to Content](#content)

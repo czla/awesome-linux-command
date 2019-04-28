@@ -13,6 +13,7 @@
 * [9.文件查找](#9文件查找)
 * [10.文件压缩](#10文件压缩)
 * [11.正则表达式](#11正则表达式)
+* [12.文本处理](#12文本处理)
 
 ### 1.Shell  
 命令 | 说明  
@@ -496,5 +497,78 @@ G | 千兆字节(1073741824个字节单位)
     `grep -Eh '^(bz\|gz\|zip)' dirlist*.txt` | 匹配以`bz`，或`gz`，或`zip`开头的文件名
     `grep -Eh '^bz\|gz\|zip' dirlist*.txt` | 匹配任意以`bz`开头，或包含`gz`，或包含`zip`的文件名
     `^\(?[0-9]\)?  [0-9]-[0-9]$` | 匹配`n n-n`或`(n) n-n`，`n`为数字
+
+[目录](#目录)
+
+### 12.文本处理
+* **sort**: 给文本行排序
+    * 常见的 sort 选项
+
+    选项  | 长选项 | 描述
+    :--:  | :--: | :--:
+    `-b` | `--ignore-leading-blanks` | 忽略每行开头的空格，从第一个非空白字符开始排序
+    `-f` | `--ignore-case`  | 让排序不区分大小写
+    `-n` | `--numeric-sort` | 基于字符串的数值来排序
+    `-r` | `--reverse`      | 按相反顺序排序
+    `-k` | `--key=field1[,field2]` | 对从`field1`到`field2`之间的字符排序，而不是整个文本行
+    `-m` | `--merge`        | 把多个文件合并成一个排好序的文件，而没有执行额外的排序
+    `-o` | `--output=file`  | 把排好序的输出结果发送到文件，而不是标准输出
+    `-t` | `--field-separator=char` | 定义域分隔字符。默认情况下，域由空格或制表符分隔
+
+* **uniq**: 删除相邻的重复行
+    * 常见的 uniq 选项
+
+        选项  |  描述
+        :--:  |  :--:
+        `-c` | 输出所有的重复行，并且每行开头显示重复的次数
+        `-d` | 只输出重复行，而不是特有的文本行
+        `-f n` | 忽略每行开头的`n`个字段，字段之间由空格分隔
+        `-i` | 在比较文本行的时候忽略大小写
+        `-s n` | 忽略每行开头的`n`个字符
+        `-u` | 只输出独有的文本行。这是默认的
+
+* **tr**: 更改字符
+    * `echo "lowercase letters" | tr a-z A-Z` 输出 `LOWERCASE LETTERS`
+    * `echo "lowercase letters" | tr [:lower:] A` 输出 `AAAAAAAAA AAAAAAA`
+    * `tr -d '\r' < dos_file > unix_file` 转换`MS-DOS`文本文件为`Unix`风格文本
+
+* **sed**: **s**tream **ed**itor，流编辑器
+    * sed 地址表示法
+
+    地址 | 说明
+    :--: | :--:
+    `n` | 行号，`n`是一个正整数
+    `$` | 最后一行
+    `/regexp/` | 所有匹配该基本正则表达式的文本行
+    `addr1,addr2` | 从`addr1`到`addr2`范围内的文本行，包含地址`addr2`在内
+    `first~step` | 匹配由数字`first`开始，然后每`step`间隔处的文本行
+    `addr1,+n` | 匹配地址`addr1`和随后的`n`个文本行
+    `addr!` | 匹配所有的文本行，除了`addr`之外，`addr`可能是上述任意的地址形式
+
+    * sed 基本编辑命令
+    
+    命令 | 描述
+    :--: | :--:
+    `=` | 输出当前的行号
+    `a` | 在当前行之后追加文本
+    `d` | 删除当前行
+    `i` | 在当前行之前插入文本
+    `p` | 打印当前行
+    `q` | 退出`sed`，不再处理更多的文本行。如果不指定`-n`选项，输出当前行
+    `Q` | 退出`sed`，不再处理更多的文本行
+    `s/regexp/replacement/` | 只要找到一个`regexp`匹配项，就替换为`replacement`的内容，在`replacement`末尾的斜杠之后，可以指定一个可选的标志，来修改`s`命令的行为
+
+
+    * 示例
+
+    命令 | 描述
+    :--: | :--:
+    `echo "front" \| sed 's/front/back/'` | 把`front`替换为`back`
+    `echo "front" \| sed '2s/front/back/'` | 把第二行中`front`替换为`back`，因此输出仍为`front`
+    `sed -n '1,5p' distros.txt` | 打印出一系列的文本行，开始于第一行，直到第五行
+    `/etc/passwd \| sed '/root/p'` | 搜索`/etc/passwd`有`root`关键字的行
+    `/etc/passwd \| sed  '/root/d'` | 删除`/etc/passwd`所有包含`root`的行，其他行输出
+    `sed -i 's/\.$/\!/g' regular_express.txt` | 将 `regular_express.txt`内每一行结尾若为`.`则换成`!`
+    `sed -i '$a # This is a test' regular_express.txt` | 在`regular_express.txt`最后一行加入`# This is a test`
 
 [目录](#目录)
