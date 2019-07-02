@@ -14,6 +14,7 @@
 * [10.文件压缩](#10文件压缩)
 * [11.正则表达式](#11正则表达式)
 * [12.文本处理](#12文本处理)
+* [13.conda](#13conda)
 
 ### 1.Shell  
 命令 | 说明  
@@ -570,5 +571,10 @@ G | 千兆字节(1073741824个字节单位)
     `/etc/passwd \| sed  '/root/d'` | 删除`/etc/passwd`所有包含`root`的行，其他行输出
     `sed -i 's/\.$/\!/g' regular_express.txt` | 将 `regular_express.txt`内每一行结尾若为`.`则换成`!`
     `sed -i '$a # This is a test' regular_express.txt` | 在`regular_express.txt`最后一行加入`# This is a test`
+
+[目录](#目录)
+
+### 13.conda
+详细信息，请点击[conda常用命令](conda-cheatsheet.pdf)
 
 [目录](#目录)

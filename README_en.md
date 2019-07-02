@@ -14,6 +14,7 @@ For Chinese version, click [中文版](README.md)
 * [10.Compress files](#10compress-files)
 * [11.Regular Expression](#11regular-expression)
 * [12.Manipulating text](#12manipulating-text)
+* [13.conda](#13conda)
 
 ### 1.Shell  
 Command | Description  
@@ -566,5 +567,11 @@ Command | Description
     `/etc/passwd \| sed  '/root/d'` | Delete lines contain `root` in `/etc/passwd` and print other lines
     `sed -i 's/\.$/\!/g' regular_express.txt` | Replace the last `.` of a line with `!` in `regular_express.txt`
     `sed -i '$a # This is a test' regular_express.txt` | Add `# This is a test` to the last line of `regular_express.txt`
+
+[Back to Content](#content)
+
+### 13.conda
+
+For more detail information, please click [conda Totorial](conda-cheatsheet.pdf)
 
 [Back to Content](#content)
